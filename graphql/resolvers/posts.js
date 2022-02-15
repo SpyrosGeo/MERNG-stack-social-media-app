@@ -30,6 +30,9 @@ module.exports = {
     Mutation:{
         async createPost(_,{body},context){
             const user = checkAuth(context)// if we get here there is no error so no need to check further
+            if(body.trim()===""){
+                throw new Error('Post must not be empty')
+            }
             const newPost = new Post({
                 body,
                 user:user.id,
@@ -38,9 +41,9 @@ module.exports = {
 
             })
             const post = await newPost.save()
-            context.pubsub.publish('NEW_POST',{
-                newPost:post
-            })
+            // context.pubsub.publish('NEW_POST',{
+            //     newPost:post
+            // })
             return post;
         },
         async deletePost(_,{postId},context){
