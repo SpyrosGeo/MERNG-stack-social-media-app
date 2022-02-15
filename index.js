@@ -13,6 +13,7 @@ const resolvers = require('./graphql/resolvers')
 const server = new ApolloServer({
     typeDefs,
     resolvers,
+    context:({req})=>({req}) //take the req body and forward it to the context
     
 })
 
