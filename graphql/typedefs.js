@@ -22,6 +22,8 @@ const {gql} = require('apollo-server')
         username:String!
         comments:[Comment]!
         likes:[Like]!
+        likeCount:Int!
+        commentCount:Int!
     }
     type User{
         id:ID!
@@ -58,5 +60,7 @@ const {gql} = require('apollo-server')
         deleteComment(postId:ID!,commentId:ID!):Post!
         likePost(postId:ID!):Post!
     }
+
+  
     
  `
