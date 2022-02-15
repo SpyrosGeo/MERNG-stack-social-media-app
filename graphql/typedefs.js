@@ -27,8 +27,7 @@ const {gql} = require('apollo-server')
     }
     type Mutation {
         register(registerInput:RegisterInput):User!
-
-        
+        login(username:String!, password:String! ):User!
     }
- 
+    
  `
